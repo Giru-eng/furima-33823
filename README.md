@@ -53,7 +53,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_many : shipping_locations
+- has_one : shipping_location
 
 ## shipping_locations
 
