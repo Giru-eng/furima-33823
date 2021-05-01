@@ -87,9 +87,21 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it 'passwordが半角英数混合でないと登録できない' do
+      it 'passwordが半角数字のみの場合は登録できない' do
         @user.password = '000000'
         @user.password_confirmation = '000000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+      it 'passwordが半角英字のみの場合は登録できない' do
+        @user.password = 'aaaaaa'
+        @user.password_confirmation = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+      it 'passwordが全角の場合は登録できない' do
+        @user.password = 'やマ田りくタ郎'
+        @user.password_confirmation = 'やマ田りくタ郎'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
       end
@@ -118,6 +130,11 @@ RSpec.describe User, type: :model do
         @user.firstname_furigana = 'りくたろう'
         @user.valid?
         expect(@user.errors.full_messages).to include('Firstname furigana Full-width katakana characters')
+      end
+      it 'emailは@が含まれていないと登録ができない' do
+        @user.email = 'aaa.aaa.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it '重複したemailが存在する場合登録できない' do
         @user.save
