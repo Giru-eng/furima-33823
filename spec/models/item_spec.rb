@@ -87,42 +87,42 @@ RSpec.describe Item, type: :model do
       it 'Priceが¥299以下だと登録できない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'Priceが¥10,000,000以上だと登録できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'Priceが半角数字でないと登録できない' do
         @item.price = '３３３'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number")
+        expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'category_idが1だと登録できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'condition_idが1だと登録できない' do
         @item.condition_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition Select")
+        expect(@item.errors.full_messages).to include('Condition Select')
       end
       it 'days_to_ship_idが1だと登録できない' do
         @item.days_to_ship_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days to ship Select")
+        expect(@item.errors.full_messages).to include('Days to ship Select')
       end
       it 'prefecture_idが1だと登録できない' do
         @item.prefecture_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture Select")
+        expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it 'ship_form_area_idが1だと登録できない' do
         @item.ship_form_area_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Ship form area Select")
+        expect(@item.errors.full_messages).to include('Ship form area Select')
       end
     end
   end
