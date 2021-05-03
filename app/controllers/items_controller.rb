@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index]
+  before_action :authenticate_user!, except: :index
   
   def index
   end
@@ -14,12 +14,6 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render 'new'
-    end
-  end
-
-  def move_to_index
-    unless user_signed_in?
-      redirect_to '/users/sign_in'
     end
   end
 
