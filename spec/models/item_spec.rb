@@ -10,31 +10,31 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it 'Priceが¥300~¥9,999,999の間であれば登録できる' do
-        @item.price = '300'
+        @item.price = 300
         expect(@item).to be_valid
       end
       it 'Priceが半角数字であれば登録できる' do
-        @item.price = '9999999'
+        @item.price = 9999999
         expect(@item).to be_valid
       end
       it 'category_idが1~11の中で1以外であれば登録できる' do
-        @item.category_id = '11'
+        @item.category_id = 11
         expect(@item).to be_valid
       end
       it 'condition_idが1~7の中で1以外であれば登録できる' do
-        @item.condition_id = '7'
+        @item.condition_id = 7
         expect(@item).to be_valid
       end
       it 'days_to_ship_idが1~4の中で1以外であれば登録できる' do
-        @item.days_to_ship_id = '4'
+        @item.days_to_ship_id = 4
         expect(@item).to be_valid
       end
       it 'prefecture_idが1~48の中で1以外であれば登録できる' do
-        @item.prefecture_id = '48'
+        @item.prefecture_id = 48
         expect(@item).to be_valid
       end
       it 'ship_form_area_idが1~3の中で1以外であれば登録できる' do
-        @item.ship_form_area_id = '3'
+        @item.ship_form_area_id = 3
         expect(@item).to be_valid
       end
     end
@@ -85,12 +85,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'Priceが¥299以下だと登録できない' do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'Priceが¥10,000,000以上だと登録できない' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
@@ -100,27 +100,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price Half-width number')
       end
       it 'category_idが1だと登録できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'condition_idが1だと登録できない' do
-        @item.condition_id = '1'
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Condition Select')
       end
       it 'days_to_ship_idが1だと登録できない' do
-        @item.days_to_ship_id = '1'
+        @item.days_to_ship_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Days to ship Select')
       end
       it 'prefecture_idが1だと登録できない' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it 'ship_form_area_idが1だと登録できない' do
-        @item.ship_form_area_id = '1'
+        @item.ship_form_area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Ship form area Select')
       end
