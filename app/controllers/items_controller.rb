@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit]
 
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.order('created_at DESC')
   end
 
   def new
@@ -33,14 +33,12 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render 'edit'
-    end 
+    end
   end
 
   def ensure_correct_user
     @item = Item.find(params[:id])
-     unless @item.user == current_user
-     redirect_to root_path
-   end
+    redirect_to root_path unless @item.user == current_user
   end
 
   private
