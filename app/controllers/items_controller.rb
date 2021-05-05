@@ -34,17 +34,18 @@ class ItemsController < ApplicationController
     end
   end
 
-  def ensure_correct_user
-    redirect_to root_path unless @item.user == current_user
-  end
-
   private
 
   def item_params
     params.require(:item).permit(:image, :title, :description, :category_id, :condition_id, :prefecture_id, :ship_form_area_id,
                                  :days_to_ship_id, :price).merge(user_id: current_user.id)
   end
+
   def set_item
     @item = Item.find(params[:id]) 
+  end
+  
+  def ensure_correct_user
+    redirect_to root_path unless @item.user == current_user
   end
 end
