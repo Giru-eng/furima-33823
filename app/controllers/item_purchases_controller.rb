@@ -39,8 +39,5 @@ class ItemPurchasesController < ApplicationController
 
   def ensure_correct_user
     redirect_to root_path if current_user.id == @item.user_id && @item.item_purchase.blank? || @item.item_purchase.present?
-    return
-    redirect_to root_path if @item.item_purchase.present?
-    return
   end
 end
