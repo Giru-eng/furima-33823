@@ -9,18 +9,6 @@ RSpec.describe OrderForm, type: :model do
     it "token、postal_code、city、address、phone_number、user_id、item_idがあれば保存ができること" do
       expect(@order_form).to be_valid
     end
-    it "postal_codeが前3桁後ろ４桁の半角数字で間にハイフン(-)があれば保存ができること" do
-      @order_form.postal_code = '123-4567'
-      expect(@order_form).to be_valid
-    end
-    it 'prefecture_idが1~48の中で1以外であれば登録できる' do
-      @order_form.prefecture_id = 48
-      expect(@order_form).to be_valid
-    end
-    it "phone_numberが10or11桁の半角数字であれば保存ができること" do
-      @order_form.phone_number = 12345678910
-      expect(@order_form).to be_valid
-    end
   end
 
   context '内容に問題がある場合' do
