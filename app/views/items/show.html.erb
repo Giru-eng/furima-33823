@@ -22,7 +22,7 @@
         <%= @item.price %>
       </span>
       <span class="item-postage">
-        <%= ShipFormArea.find(@item.ship_form_area_id)[:name] %>
+        <%= @item.ship_form_area.name %>
       </span>
     </div>
 
@@ -30,7 +30,7 @@
       <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
-    <% else user_signed_in? && @item.item_purchase.blank? %>
+    <% elsif user_signed_in? && @item.item_purchase.blank? %>
       <%# 商品が売れていない場合はこちらを表示 %> 
         <%= link_to "購入画面に進む", item_purchases_path ,class:"item-red-btn"%>
     <% end %>
@@ -42,27 +42,27 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= User.find(@item.user_id)[:nickname] %></td>
+          <td class="detail-value"><%= @item.user.nickname %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= Category.find(@item.category_id)[:name] %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= Condition.find(@item.condition_id)[:name] %></td>
+          <td class="detail-value"><%= @item.condition.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= ShipFormArea.find(@item.ship_form_area_id)[:name] %></td>
+          <td class="detail-value"><%= @item.ship_form_area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= Prefecture.find(@item.prefecture_id)[:name] %></td>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= DaysToShip.find(@item.days_to_ship_id)[:name] %></td>
+          <td class="detail-value"><%= @item.days_to_ship.name %></td>
         </tr>
       </tbody>
     </table>
@@ -101,7 +101,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <a href="#" class="another-item"><%= Category.find(@item.category_id)[:name] %>をもっと見る</a>
+  <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
