@@ -6,8 +6,6 @@ FactoryBot.define do
     city { Gimei.address.city.kanji }
     address { Gimei.address.town.kanji }
     phone_number { 12345678910 }
-    user_id {1}
-    item_id {1}
+    building_name { Gimei.last.kanji + "ビル" } 
   end
-
 end
