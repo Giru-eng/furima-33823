@@ -54,6 +54,6 @@ class ItemsController < ApplicationController
   end
 
   def ensure_correct_user
-    redirect_to root_path unless @item.user == current_user
+    redirect_to root_path unless @item.user == current_user && @item.item_purchase.blank?
   end
 end
