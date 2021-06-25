@@ -6,13 +6,13 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_form_area
   belongs_to_active_hash :days_to_ship
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_one :item_purchase
 
   with_options presence: true do
     validates :title
     validates :description
-    validates :image
+    validates :images
     with_options numericality: { other_than: 1, message: 'Select' } do
       validates :category_id
       validates :condition_id

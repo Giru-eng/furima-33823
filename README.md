@@ -41,7 +41,7 @@
 - belongs_to_active_hash :ship_form_area
 - belongs_to_active_hash :days_to_ship
 - belongs_to :user
-- has_one_attached :image
+- has_many_attached :images
 
 ## item_purchases
 

@@ -73,6 +73,12 @@
 /* /共通 */
 
 /* 出品画像 */
+img {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
+
 .img-upload {
   display: flex;
   justify-content: space-between;
