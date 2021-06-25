@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function(){
       // 表示する画像を生成
       const blobImage = document.createElement('img');
       blobImage.setAttribute('src', blob);
+      blobImage.setAttribute('width', '132')
+      blobImage.setAttribute('height', '132')
 
       // ファイル選択ボタンを生成
       const inputHTML = document.createElement('input')
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
       // 生成したHTMLの要素をブラウザに表示させる
       imageElement.appendChild(blobImage);
-      imageElement.appendChild(inputHTML)
+      imageElement.appendChild(inputHTML);
       ImageList.appendChild(imageElement);
 
       inputHTML.addEventListener('change', (e) => {
